@@ -3,44 +3,121 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Nola • Dîners Paris 2025–2026</title>
+  <title>Nola – Ajouter à mon agenda</title>
   <style>
-    :root { --bg:#0f1115; --card:#171923; --txt:#f0f3f8; --muted:#adb5bd; }
-    body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto}
-    .wrap{max-width:720px;margin:4rem auto;padding:0 1rem}
-    .card{background:var(--card);border-radius:16px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    h1{font-size:28px;margin:0 0 8px}
-    p{margin:12px 0;color:var(--muted)}
-    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    a.btn{display:inline-block;padding:14px 18px;border-radius:12px;text-decoration:none;font-weight:600}
-    .primary{background:#22c55e;color:#0b111b}
-    .ghost{outline:1px solid #2b3344;color:#e6e9f2}
-    small{display:block;margin-top:14px;color:var(--muted)}
-    code{background:#0d0f14;padding:2px 6px;border-radius:6px}
+    :root{
+      --bg:#f8f9f0;      /* Nola fond clair */
+      --ink:#0f1a14;     /* texte principal */
+      --muted:#5b635b;   /* texte secondaire */
+      --accent:#d17c3f;  /* accent Nola */
+      --sage:#718264;    /* vert Nola */
+      --card:#ffffff;
+      --ring: rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font: 16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+    }
+    .wrap{max-width:860px; margin:8svh auto; padding:0 20px}
+    .hero{
+      background:var(--card);
+      border:1px solid var(--ring);
+      border-radius:20px;
+      padding:42px 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+    }
+    h1{
+      margin:0 0 10px; font-size: clamp(28px,4.5vw,40px);
+      letter-spacing:-.02em;
+    }
+    .sub{
+      margin:0 0 28px; color:var(--muted); font-size:18px;
+    }
+    .stack{display:flex; flex-wrap:wrap; gap:14px}
+    .btn{
+      appearance:none; border:0; cursor:pointer; text-decoration:none;
+      padding:14px 18px; border-radius:14px; font-weight:600;
+      transition:.15s transform ease, .15s box-shadow ease;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn:active{transform:translateY(1px)}
+    .primary{ background:var(--accent); color:#fff; }
+    .secondary{ background:#fff; color:var(--ink); border:1px solid var(--ring); }
+    .ghost{ background:#fff; color:var(--sage); border:1px dashed var(--sage); }
+    .btn:hover{ box-shadow:0 6px 20px rgba(0,0,0,.08); }
+    .note{ margin-top:18px; color:var(--muted); font-size:14px }
+    .pill{
+      display:inline-block; font-size:12px; font-weight:600;
+      background: #fff; border:1px solid var(--ring); color:var(--muted);
+      padding:6px 10px; border-radius:999px; margin-left:8px;
+    }
+    .row{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:6px}
+    .badge{padding:4px 8px; border-radius:999px; background:#efe7e0; color:#5b3a22; font-weight:600; font-size:12px}
+    @media (max-width:640px){ .hero{padding:28px 20px} }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <div class="card">
-      <h1>Ajoute Nola à ton agenda 🍷</h1>
-      <p>Paris — 20&nbsp;novembre&nbsp;2025 puis <strong>chaque 2ᵉ mardi</strong> jusqu’à juin&nbsp;2026.<br/>
-         Choisis&nbsp;: <em>s’abonner</em> (recommandé, mises à jour auto) ou <em>télécharger</em> le fichier .ics (ajout ponctuel).</p>
+    <section class="hero">
+      <div class="row">
+        <h1>Ajoute Nola à ton agenda 🍷</h1>
+        <span class="pill">Paris</span>
+      </div>
+      <p class="sub">
+        20&nbsp;nov. 2025 puis <strong>chaque 2ᵉ mardi</strong> jusqu’à juin 2026.
+      </p>
 
-      <div class="btns">
-        <!-- Abonnement (mises à jour automatiques) -->
-        <a class="btn primary" href="webcal://cheznola.github.io/nola-calendar/nola-paris-2025-2026.ics">
-          ✅ S’abonner au calendrier Nola
+      <div class="stack">
+        <!-- Apple / Outlook : abonnement direct -->
+        <a class="btn primary"
+           href="webcal://cheznola.github.io/nola-calendar/nola-paris-2025-2026.ics">
+          ➕ S’abonner (Apple / Outlook)
         </a>
 
-        <!-- Téléchargement (ajout ponctuel) -->
-        <a class="btn ghost" href="https://raw.githubusercontent.com/cheznola/nola-calendar/main/nola-paris-2025-2026.ics" download>
-          ⬇️ Télécharger le fichier .ics
+        <!-- Google Calendar : copie l’URL puis ouvre la page “À partir de l’URL” -->
+        <button class="btn secondary" id="gcal">
+          🗓️ Google Calendar
+        </button>
+
+        <!-- Téléchargement ponctuel -->
+        <a class="btn ghost"
+           href="https://raw.githubusercontent.com/cheznola/nola-calendar/main/nola-paris-2025-2026.ics"
+           download>
+          ⬇️ Fichier .ics
         </a>
       </div>
 
-      <small>Besoin d’aide ? Sur Mac : <code>Fichier → Nouvel abonnement au calendrier…</code>.
-      Sur Google Calendar : <code>Paramètres → Ajouter un agenda → À partir de l’URL</code>.</small>
-    </div>
+      <div class="note" id="toast" style="display:none"></div>
+    </section>
   </main>
+
+  <script>
+    // URL d’abonnement HTTPS (requise par Google)
+    const ICS_HTTPS = "https://cheznola.github.io/nola-calendar/nola-paris-2025-2026.ics";
+    const GCAL_ADD_BY_URL = "https://calendar.google.com/calendar/u/0/r/settings/addbyurl";
+
+    function toast(msg){
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.style.display = 'block';
+      el.style.opacity = 0;
+      el.animate([{opacity:0},{opacity:1}],{duration:150,fill:'forwards'});
+      setTimeout(()=>el.animate([{opacity:1},{opacity:0}],{duration:180,fill:'forwards'})
+        .finished.then(()=>{ el.style.display='none'; }), 2600);
+    }
+
+    // Bouton Google : copie l’URL dans le presse-papiers, puis ouvre la page “Ajouter via URL”.
+    document.getElementById('gcal').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(ICS_HTTPS);
+        toast("URL copiée. Dans Google Calendar, colle l’URL et valide.");
+      } catch {
+        toast("Copie impossible : l’URL s’affichera sur la page suivante.");
+      }
+      window.open(GCAL_ADD_BY_URL, "_blank", "noopener");
+    });
+  </script>
 </body>
 </html>
