@@ -1,0 +1,66 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Nola//Diners RH//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Europe/Paris
+X-LIC-LOCATION:Europe/Paris
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+
+BEGIN:VEVENT
+UID:nola-paris-rh-2025-12-09@cheznola.fr
+DTSTAMP:20251110T090000Z
+SUMMARY:Dîner Nola RH — Paris 🍷
+LOCATION:Paris
+DESCRIPTION:📍 Paris — le lieu exact (un bon resto, table de 6) sera révélé quelques jours avant.\n\n💛 Comment ça marche ?\nQuelques jours avant, tu recevras un formulaire réservation pour :\n→ choisir ton quartier préféré,\n→ indiquer ton mood du moment,\n→ partager un sujet ou une problématique RH.\nNola t’associe aux bonnes personnes autour de la table.\n\n👥 Tu peux inviter un·e +1 RH si tu veux partager l’expérience.\n\n🎟 Ticket : 9 €, à régler lors du RSVP.\nLe dîner est à ta charge, dans un restaurant choisi avec soin.\n\n🔗 Infos & RSVP : cheznola.fr
+DTSTART;TZID=Europe/Paris:20251209T193000
+DTEND;TZID=Europe/Paris:20251209T220000
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rappel — Dîner Nola RH dans 7 jours 🍷
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rappel — Dîner Nola RH ce soir 🍷
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+
+BEGIN:VEVENT
+UID:nola-paris-rh-2026-series@cheznola.fr
+DTSTAMP:20251110T090000Z
+SUMMARY:Dîner Nola RH — Paris 🍷
+LOCATION:Paris
+DESCRIPTION:📍 Paris — le lieu exact (un bon resto, table de 6) sera révélé quelques jours avant.\n\n💛 Comment ça marche ?\nQuelques jours avant, tu recevras un formulaire RSVP pour :\n→ choisir ton quartier préféré,\n→ indiquer ton mood du moment,\n→ partager un sujet ou une problématique RH.\nNola t’associe aux bonnes personnes autour de la table.\n\n👥 Tu peux inviter un·e +1 RH si tu veux partager l’expérience.\n\n🎟 Ticket : 9 €, à régler lors du RSVP.\nLe dîner est à ta charge, dans un restaurant choisi avec soin.\n\n🔗 Infos & RSVP : cheznola.fr
+DTSTART;TZID=Europe/Paris:20260113T193000
+DTEND;TZID=Europe/Paris:20260113T220000
+RRULE:FREQ=MONTHLY;BYDAY=TU;BYSETPOS=2;COUNT=6
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rappel — Dîner Nola RH dans 7 jours 🍷
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rappel — Dîner Nola RH ce soir 🍷
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+
+END:VCALENDAR
