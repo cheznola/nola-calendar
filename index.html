@@ -31,6 +31,9 @@
     .btn-dashed{border:2px dashed #e0e0e0;background:#fff;color:#1f2937}
     .help{margin-top:14px;color:var(--muted);font-size:13px}
     .wine{font-size:22px;margin-left:6px}
+    .switch{margin-top:14px;font-size:14px;color:#6b6b6b}
+    .switch a{font-weight:600;color:#1e1e1e;text-decoration:none}
+    .switch a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
@@ -44,23 +47,51 @@
 
       <div class="cta">
         <!-- Apple / Outlook (subscription via webcal) -->
-        <a class="btn btn-primary" href="webcal://cheznola.github.io/nola-calendar/nola-paris-2025-2026.ics" rel="noopener">
+        <a id="btn-apple" class="btn btn-primary" href="webcal://cheznola.github.io/nola-calendar/nola-paris-2025-2026.ics" rel="noopener">
           + S’abonner (Apple / Outlook)
         </a>
 
         <!-- Google Calendar (pre-filled Add-by-URL) -->
-        <a class="btn btn-ghost" href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fcheznola.github.io%2Fnola-calendar%2Fnola-paris-2025-2026.ics" target="_blank" rel="noopener">
+        <a id="btn-google" class="btn btn-ghost" href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fcheznola.github.io%2Fnola-calendar%2Fnola-paris-2025-2026.ics" target="_blank" rel="noopener">
           + S’abonner (Google)
         </a>
 
         <!-- Raw file download -->
-        <a class="btn btn-dashed" href="https://cheznola.github.io/nola-calendar/nola-paris-2025-2026.ics" download>
+        <a id="btn-download" class="btn btn-dashed" href="https://cheznola.github.io/nola-calendar/nola-paris-2025-2026.ics" download>
           ⬇︎ Télécharger le .ics
         </a>
       </div>
 
       <p class="help">Recommandé : s’abonner (mises à jour automatiques). Le fichier .ics ajoute les dates une fois, sans suivi.</p>
+
+      <p class="switch" id="switch-link">
+        Aussi pour les équipes RH ? 
+        <a href="?seg=RH">Voir la version RH</a>
+      </p>
     </section>
   </main>
+
+  <script>
+  (() => {
+    const params = new URLSearchParams(location.search);
+    const seg = params.get("seg") || "Product";
+
+    const appleBtn = document.getElementById('btn-apple');
+    const googleBtn = document.getElementById('btn-google');
+    const downloadBtn = document.getElementById('btn-download');
+    const switchLink = document.getElementById('switch-link');
+
+    if (seg.toLowerCase() === "rh") {
+      const rhFile = "nola-paris-2025-2026-rh.ics";
+
+      appleBtn.href = `webcal://cheznola.github.io/nola-calendar/${rhFile}`;
+      googleBtn.href = `https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fcheznola.github.io%2Fnola-calendar%2F${rhFile}`;
+      downloadBtn.href = `https://cheznola.github.io/nola-calendar/${rhFile}`;
+
+      switchLink.innerHTML = `Plutôt Product People ? 
+        <a href="?seg=Product">Voir la version Produit</a>`;
+    }
+  })();
+  </script>
 </body>
 </html>
