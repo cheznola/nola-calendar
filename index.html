@@ -37,7 +37,7 @@
       <h1>Ajoute Nola à ton agenda<span class="wine">🍷</span></h1>
 
       <div class="meta">
-        <!-- Ce texte est mis à jour côté JS si seg=RH -->
+        <!-- Mise à jour dynamique selon le segment -->
         <span id="meta-date">
           20&nbsp;nov.&nbsp;2025 <strong>(édition early)</strong>, puis <strong>chaque 2ᵉ mardi</strong> jusqu’à juin&nbsp;2026
         </span>
@@ -80,14 +80,15 @@
     const metaDate = document.getElementById('meta-date');
 
     if (seg === "rh") {
-  const rhFile = "nola-paris-2025-2026-rh.ics?v=2025-11-10"; // anti-cache léger
-  appleBtn.href   = `webcal://cheznola.github.io/nola-calendar/${rhFile}`;
-  googleBtn.href  = `https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fcheznola.github.io%2Fnola-calendar%2F${rhFile}`;
-  downloadBtn.href= `https://cheznola.github.io/nola-calendar/${rhFile}`;
+      const rhFile = "nola-paris-2025-2026-rh.ics?v=2025-11-10"; // anti-cache léger
+      appleBtn.href   = `webcal://cheznola.github.io/nola-calendar/${rhFile}`;
+      googleBtn.href  = `https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fcheznola.github.io%2Fnola-calendar%2F${rhFile}`;
+      downloadBtn.href= `https://cheznola.github.io/nola-calendar/${rhFile}`;
 
-  // Texte teaser RH
-  metaDate.innerHTML = `Nola RH arrive en 2026.<br>Les premières dates seront annoncées très bientôt.`;
-}
+      // Texte sur une seule ligne
+      metaDate.innerHTML = `Nola RH arrive en 2026. Les premières dates seront annoncées très bientôt.`;
+    }
+
   })();
   </script>
 </body>
